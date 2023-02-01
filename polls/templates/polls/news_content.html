@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+{% block content %}
+    <h1>{{ title }}  FROM {{ author }} </h1>
+    <div>
+
+        <p>{{ article.content }}</p>
+
+        <p>{{ category }}</p>
+    <div>
+    <hr>
+     <form method="post" action={% url 'like' id %} name = 'like'>
+        {% csrf_token %}
+        <p><button type="submit">like</button> Количество лайков = {{likes_count}}</p>
+     </form>
+    <hr>
+    <h2>Оставьте свой комментарий</h2>
+    <form class="create-form" method="post">
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="coment">
+                Комментарий:
+            </label>
+            <textarea id="coment" name="coment" >
+            </textarea>
+        </div>
+
+        <button class="submit-btn" type="submit">
+            Оставить комментарий
+        </button>
+        <hr>
+        <select id="coment-sort">
+            <option value="date-asc">Сначала новые</option>
+            <option value="date-desc">Сначала старые</option>
+        </select>
+
+         <h2>Коментарии</h2>
+        <hr>
+        <hr>
+        {% for comment in comments %}
+
+
+        <div>
+            <p>{{ comment.content}}</p>
+            <p>  from {{ comment.user.username}} </p>
+            <p>{{ comment.created_at  }}</p>
+
+        </div>
+        <hr>
+        <hr>
+        {% endfor %}
+{% endblock %}

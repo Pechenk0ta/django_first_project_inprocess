@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск по категориям</title>
+</head>
+<body>
+ <form class="create-form" method="post">
+        {% csrf_token %}
+        <<div class="dropdown">
+        <select name="secelt-category" id="" class='select'>
+            <option value="Политика"> Политика </option>
+            <option value="Музыка"> Музыка </option>
+            <option value="Спорт"> Спорт </option>
+            <option value="Наука"> Наука </option>
+            <option value="Разное"> Разное </option>
+        </select>
+
+            </div>
+        </div>
+        <button class="submit-btn" type="submit">
+            Сохранить
+        </button>
+    </form>
+<span class="navbar-text">
+    </span>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% block content %}
+
+<html>
+  <head>
+    <title>Posts list</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <style>
+      .news-list {
+        margin: 0;
+        padding: 0;
+      }
+
+      .news-item {
+        list-style-type: none;
+        padding: 1rem 0;
+      }
+
+      .news-title {
+        text-transform: uppercase;
+      }
+
+      .news-item:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+      }
+
+      .news-anchor-btn {
+        display: inline-block;
+        color: purple;
+        text-decoration: none;
+        margin-top: 1.5rem;
+      }
+    </style>
+    <div id="app">
+      <ul class="news-list">
+        {% for new in news %}
+        <li class="news-item">
+          <h3 class="news-title">{{ new.title }}</h3>
+          <p> {{ new.content }}</p>
+          <a class="news-anchor-btn" href="{% url 'News_Processes_comments' new.id %}">
+            Перейти
+          </a>
+        </li>
+         {% endfor %}
+      </ul>
+    </div>
+  <span class="navbar-text">
+    </span>
+  </body>
+</html>
+{% endblock %}
